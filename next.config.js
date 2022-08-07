@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  images: {
-    domains: ['anilibria.tv']
+const withPWA = require('next-pwa')
+const runtimeCaching = require('next-pwa/cache')
+module.exports = withPWA({
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true,
   },
-}
-
-module.exports = nextConfig
+})
