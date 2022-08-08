@@ -89,7 +89,7 @@ const TitlePage=() => {
                                         </Stack>
                                     </Stack>
                                     <Text paddingLeft={4}>Плеер</Text>
-                                    <Stack padding={4} cornerRadius='12px'>
+                                    <Stack padding={4}>
                                         <div id="player" style={{borderRadius: '12px'}} />
                                     </Stack>
                                 </Stack>
