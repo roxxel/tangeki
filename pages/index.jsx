@@ -46,15 +46,15 @@ export default function Home() {
       <Head>
         <title>Главная | Tangeki</title>
       </Head>
-      <Stack paddingLeft={[6, 10, 16, 24, 32]} paddingRight={[6, 10, 16, 24, 32]} paddingTop={[6, 10, 16, 24, 48]}>
+      <Stack paddingLeft={[6, 10, 16, 24, 96]} paddingRight={[6, 10, 16, 24, 96]}>
         <div style={isLoading? {display: 'grid', placeItems: 'center'}:{}}>
           <Input value={searchQuery} onChange={(e) => {setSearchQuery(e.target.value); doSearch(e.target.value)}} placeholder="Поиск" />
           {
             isLoading? <Spinner size='xl' thickness='4px' speed='0.8s' marginTop={4}></Spinner>:
-              <SimpleGrid marginTop={5} spacing={7} minChildWidth='150px'>
+              <SimpleGrid marginTop={5} spacing={7} minChildWidth='120px'>
                 {
                   titles.map((x) =>
-                    <Stack maxWidth='150px' key={x.id} _hover={{cursor: 'pointer'}} onClick={(e) => router.push({
+                    <Stack maxWidth='120px' key={x.id} _hover={{cursor: 'pointer'}} onClick={(e) => router.push({
                       pathname: '/title',
                       query: {
                         id: x.id

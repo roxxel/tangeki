@@ -1,4 +1,4 @@
-import {Button, List, Spinner, Stack, Text} from "@chakra-ui/react";
+import {Box, Button, Grid, List, Spinner, Stack, Text} from "@chakra-ui/react";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import Head from "next/head";
@@ -60,14 +60,18 @@ const TitlePage=() => {
                 .pjscssed {
                     border-radius: 6px;
                 }
+                #player {
+                    display: flex;
+                    justify-content: center;
+                }
             `}</style>
-            <Stack style={{display: 'grid', placeItems: 'center'}}>
-                <Stack>
+            <Stack justifyContent='center' paddingLeft={[6, 10, 16, 24, 96]} paddingRight={[6, 10, 16, 24, 96]}>
+                
                     {
                         isLoading? <Spinner colorScheme='white' size='xl' thickness='4'></Spinner>:
                             !title? <Text fontSize='xl'>Ничего не найдено</Text>:
-                                <Stack marginTop={4} paddingTop={[6, 10, 16, 24, 48]}>
-                                    <Stack flexDirection={['column', 'column', 'row']}>
+                                <Stack justifyContent='center' marginTop={4}>
+                                    <Stack justifyContent='center' flexDirection={['column', 'column', 'row']}>
                                         <Stack alignItems='center'>
                                             <img style={{borderRadius: '12px'}} src={`${imageHost}${title.posters.original.url}`} width={'230px'} />
                                             <Text textAlign='center' maxWidth='230px' fontSize='xl'>{title.names.ru}</Text>
@@ -77,7 +81,7 @@ const TitlePage=() => {
                                                 <Text paddingLeft='8px' marginTop='-3.5px !important'>{title.in_favorites}</Text>
                                             </Stack>
                                         </Stack>
-                                        <Stack paddingLeft={4} paddingRight={4} maxWidth={['100%', '100%', '400px', '700px']}>
+                                        <Stack justifyContent='center' paddingLeft={4} paddingRight={4} maxWidth={['100%', '100%', '400px', '700px']}>
                                             <Text textAlign='left' color='gray.500'>{`Жанры: ${title.genres.join(', ')}`}</Text>
                                             <Text textAlign='left' color='gray.500' noOfLines={[2, 4, 8, 16, 32]} textOverflow='ellipsis'>{title.description}</Text>
                                             <Button alignSelf='end' size='xs' onClick={(e) => setIsDescriptionModalOpen(true)} maxWidth={'100px'}>Подробнее</Button>
@@ -88,13 +92,15 @@ const TitlePage=() => {
                                             </Alert> : null}
                                         </Stack>
                                     </Stack>
-                                    <Text paddingLeft={4}>Плеер</Text>
-                                    <Stack padding={4}>
-                                        <div id="player" style={{borderRadius: '12px'}} />
-                                    </Stack>
+                                    <Grid placeItems='center'>
+                                        <Text paddingLeft={4}>Плеер</Text>
+                                        <Box padding={4} minHeight={['100%']} minWidth={['100%', '100%','90%','60%']}>
+                                            <div id="player" style={{borderRadius: '12px'}} />
+                                        </Box>
+                                    </Grid>
                                 </Stack>
                     }
-                </Stack>
+                
             </Stack>
             <Modal isOpen={isDescriptionModalOpen} onClose={() => {}}>
                 <ModalOverlay />
