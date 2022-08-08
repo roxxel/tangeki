@@ -19,6 +19,7 @@ export default function Home() {
     if (!query) return setTitles([]);
     searchTimeout = setTimeout(() => {
       router.push({pathName: '/', query: {q: query}}, undefined, {shallow: true})
+      setSearchQuery(query)
     }, 400)
   }
 
@@ -41,7 +42,7 @@ export default function Home() {
       setTitles(data);
       setIsLoading(false)
     })
-  }, [router.query.q])
+  }, [searchQuery])
   return (
       <>
         <Head>
