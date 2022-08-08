@@ -23,8 +23,13 @@ export default function Home() {
   }
 
   useEffect(() => {
-    console.log(router.query.q)
-    setSearchQuery(router.query.q)
+    if (!router.query.q) return;
+    if (searchQuery === '') {
+      setSearchQuery(router.query.q)
+    }
+  }, [router.query.q])
+
+  useEffect(() => {
     if (!router.query.q || isLoading) return;
     setIsLoading(true);
     searchTitles(router.query.q).then((data) => {
