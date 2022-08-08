@@ -13,6 +13,16 @@ const getTitles = async(idList, codeList, descriptionType = 'plain') => {
     return data;
 }
 
+const getUpdates = async(descriptionType = 'plain') => {
+    let resp = await fetch(host + 'getUpdates?' + new URLSearchParams({
+        limit: 30,
+        description_type: descriptionType,
+        playlist_type: 'array',
+    }));
+    let data = await resp.json();
+    return data;
+}
+
 const searchTitles = async(query) => {
     let resp = await fetch(host + 'searchTitles?' + new URLSearchParams({
         search: query,
@@ -24,4 +34,4 @@ const searchTitles = async(query) => {
 }
 
 
-export { imageHost, getTitles, searchTitles };
+export { imageHost, getTitles, searchTitles, getUpdates };

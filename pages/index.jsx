@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {Input, List, ListItem, SimpleGrid, Spinner, Stack, Text, Image} from '@chakra-ui/react'
 import {useEffect, useState} from "react";
-import {imageHost, getTitles, searchTitles} from '../services/anilibria'
+import {imageHost, getTitles, searchTitles, getUpdates} from '../services/anilibria'
 import {useRouter} from "next/router";
 
 
